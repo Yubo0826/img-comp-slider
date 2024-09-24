@@ -8,14 +8,14 @@
     <div class="img-comp-img">
       <img :src="imageUrl1" :width="width" :height="height">
     </div>
-    <div ref="sliderRef" class="img-comp-slider"></div>
-    <div ref="imgOverlay" class="img-comp-img img-comp-overlay">
+    <!-- <div ref="sliderRef" class="img-comp-slider move"></div> -->
+    <img ref="sliderRef" src="@/assets/expand-arrows.png" class="img-comp-slider move" alt="">
+    <div ref="imgOverlay" class="img-comp-img img-comp-overlay move">
       <img :src="imageUrl2" :width="width" :height="height">
     </div>
   </div>
 </template>
 <script setup lang="ts">
-import { log } from 'console';
 import { ref, defineProps, onMounted } from 'vue'
 
 const props = defineProps({
@@ -26,12 +26,12 @@ const props = defineProps({
   width: {
     type: Number,
     required: false,
-    default: 300
+    default: 600
   },
   height: {
     type: Number,
     required: false,
-    default: 200
+    default: 400
   }
 })
 
@@ -112,8 +112,8 @@ function slideLeave(e: MouseEvent) {
 
 .img-comp-container {
   position: relative;
-  height: 200px; /*should be the same height as the images*/
-  width: 300px;
+  height: 400px; /*should be the same height as the images*/
+  width: 600px;
 }
 
 .img-comp-img {
@@ -135,7 +135,7 @@ function slideLeave(e: MouseEvent) {
   /*set the appearance of the slider:*/
   width: 40px;
   height: 40px;
-  background-color: #2196F3;
+  /* background-color: #2196F3; */
   opacity: 0.7;
   border-radius: 50%;
 }
