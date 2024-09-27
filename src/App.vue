@@ -2,12 +2,15 @@
 import imgCompSlider from './components/ImgCompSlider.vue'
 import { ref } from 'vue'
 
-const img = ref<string[]>(['/src/assets/ocean1.jpg', '/src/assets/ocean2.jpg'])
+const img = ref<string[]>([
+  '/src/assets/Florence_Italy_before.jpg',
+  '/src/assets/Florence_Italy_after.jpg'
+])
 </script>
 
 <template>
   <div>
-    <img-comp-slider :img="img"></img-comp-slider>
+    <img-comp-slider :img="img" beforeLabel="1910" afterLabel="2022"></img-comp-slider>
   </div>
 </template>
 

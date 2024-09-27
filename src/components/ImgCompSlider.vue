@@ -21,10 +21,10 @@
           <picture class="image-comparison__picture">
             <source media="(max-width: 40em)" srcset="https://images.unsplash.com/photo-1566702580807-95611c919b47?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&h=400&q=80">
             <source media="(min-width: 40.0625em) and (max-width: 48em)" srcset="https://images.unsplash.com/photo-1566702580807-95611c919b47?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&h=600&q=80">
-            <img src="https://images.unsplash.com/photo-1566702580807-95611c919b47?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&h=1000&q=80" alt="Mojave desert in the sun" class="image-comparison__image">
+            <img :src="imageBefore" alt="Mojave desert in the sun" class="image-comparison__image">
           </picture>
           <figcaption class="image-comparison__caption image-comparison__caption--before">
-            <span class="image-comparison__caption-body">Before Label</span>
+            <span class="image-comparison__caption-body">{{ beforeLabel }}</span>
           </figcaption>
         </figure>
       </div>
@@ -43,10 +43,10 @@
           <picture class="image-comparison__picture">
             <source media="(max-width: 40em)" srcset="https://images.unsplash.com/photo-1554110397-9bac083977c6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&height=400&q=80">
             <source media="(min-width: 40.0625em) and (max-width: 48em)" srcset="https://images.unsplash.com/photo-1554110397-9bac083977c6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&height=600&q=80">
-            <img src="https://images.unsplash.com/photo-1554110397-9bac083977c6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&height=1000&q=80" alt="Mojave desert in the dark" class="image-comparison__image">
+            <img :src="imageAfter" alt="Mojave desert in the dark" class="image-comparison__image">
           </picture>
           <figcaption class="image-comparison__caption image-comparison__caption--after">
-            <span class="image-comparison__caption-body">After Label</span>
+            <span class="image-comparison__caption-body">{{ afterLabel }}</span>
           </figcaption>
         </figure>
       </div>
@@ -55,7 +55,16 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, defineProps } from 'vue'
+
+const props = defineProps<{
+  img: string[],
+  beforeLabel: string,
+  afterLabel: string
+}>()
+
+const imageBefore = ref<string | null>(props.img[0] || null)
+const imageAfter = ref<string | null>(props.img[1] || null)
 
 const imageComparisonSlider = ref<HTMLElement | null>(null)
 const imageWrapperOverlay = ref<HTMLElement | null>(null)
