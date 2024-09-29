@@ -1,8 +1,22 @@
 {
-  "name": "img-comparsion-slider",
-  "version": "0.0.0",
-  "private": true,
+  "name": "img-comp-slider",
+  "private": false,
+  "version": "1.0.13",
+  "description": "A test component library that comparing two images with slider.",
   "type": "module",
+  "main": "./dist/img-comp-slider.umd.js",
+  "module": "./dist/img-comp-slider.js",
+  "exports": {
+    ".": {
+      "import": "./dist/img-comp-slider.js",
+      "require": "./dist/img-comp-slider.umd.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "src/components/"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check \"build-only {@}\" --",
@@ -11,6 +25,7 @@
     "type-check": "vue-tsc --build --force"
   },
   "dependencies": {
+    "vite-plugin-dts": "^4.2.2",
     "vue": "^3.3.10",
     "vue-router": "^4.2.5"
   },

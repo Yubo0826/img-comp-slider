@@ -1,5 +1,5 @@
 <template>
-  <section class="image-comparison" ref="imageComparisonSlider">
+  <section v-if="imageBefore && imageAfter" class="image-comparison" ref="imageComparisonSlider">
     <div class="image-comparison__slider-wrapper">
       <label for="image-comparison-range" class="image-comparison__label">Move image comparison slider</label>
       <input 
