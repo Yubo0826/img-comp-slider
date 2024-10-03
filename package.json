@@ -1,7 +1,7 @@
 {
   "name": "img-comp-slider",
   "private": false,
-  "version": "1.0.13",
+  "version": "1.0.18",
   "description": "A test component library that comparing two images with slider.",
   "type": "module",
   "main": "./dist/img-comp-slider.umd.js",
@@ -11,11 +11,11 @@
       "import": "./dist/img-comp-slider.js",
       "require": "./dist/img-comp-slider.umd.js",
       "types": "./dist/index.d.ts"
-    }
+    },
+    "./dist/style.css": "./dist/style.css"
   },
   "files": [
-    "dist",
-    "src/components/"
+    "dist"
   ],
   "scripts": {
     "dev": "vite",

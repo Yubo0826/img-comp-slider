@@ -25,7 +25,8 @@ export default defineConfig({
           vue: 'Vue'
         }
       }
-    }
+    },
+    cssCodeSplit: false // 禁用 CSS 分割，將其嵌入到 JS 中
   },
   resolve: {
     alias: {

@@ -75,14 +75,14 @@ const sliderValue = ref(50)
 const moveSliderThumb = (e: MouseEvent) => {
   if (!slider.value || !thumb.value) return
 
-  let position = e.layerY - 20
+  let position = e.offsetY - 20
   const sliderRange = slider.value
 
-  if (e.layerY <= sliderRange.offsetTop) {
+  if (e.offsetY <= sliderRange.offsetTop) {
     position = -20
   }
 
-  if (e.layerY >= sliderRange.offsetHeight) {
+  if (e.offsetY >= sliderRange.offsetHeight) {
     position = sliderRange.offsetHeight - 20
   }
 
