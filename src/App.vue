@@ -11,6 +11,7 @@ const img = ref<string[]>([
 <template>
   <div>
     <h1>Image comparion slider</h1>
+    <h3>1.Default</h3>
     <img-comp-slider :img="img" beforeLabel="1910" afterLabel="2022"></img-comp-slider>
   </div>
 </template>
@@ -19,11 +20,20 @@ const img = ref<string[]>([
 @import url('https://fonts.googleapis.com/css2?family=Edu+QLD+Beginner:wght@400..700&family=Pacifico&display=swap');
 </style>
 <style>
+:root {
+  --font-family: "Edu QLD Beginner", cursive;
+  --font-size-large: 1.5rem;
+}
+
 h1 {
-  font-family: "Edu QLD Beginner", cursive;
+  font-family: var(--font-family);
   font-optical-sizing: auto;
   font-weight: 700;
   font-style: normal;
+  text-align: center;
+}
+
+h3 {
   text-align: center;
 }
 

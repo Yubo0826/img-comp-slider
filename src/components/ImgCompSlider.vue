@@ -57,11 +57,16 @@
 <script setup lang="ts">
 import { ref, onMounted, defineProps } from 'vue'
 
-const props = defineProps<{
-  img: string[],
-  beforeLabel: string,
-  afterLabel: string
-}>()
+interface Props {
+  img: string[]
+  beforeLabel?: string,
+  afterLabel?: string,
+  direction?: string
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  direction: 'horizontal'
+})
 
 const imageBefore = ref<string | null>(props.img[0] || null)
 const imageAfter = ref<string | null>(props.img[1] || null)
@@ -72,6 +77,7 @@ const slider = ref<HTMLElement | null>(null)
 const thumb = ref<HTMLElement | null>(null)
 const sliderValue = ref(50)
 
+// 定義移動 thumb 的方法，處理滑動過程中的事件
 const moveSliderThumb = (e: MouseEvent) => {
   if (!slider.value || !thumb.value) return
 
@@ -89,6 +95,7 @@ const moveSliderThumb = (e: MouseEvent) => {
   thumb.value.style.top = `${position}px`
 }
 
+// 定義移動 slider 的方法，處理 range 輸入的事件
 const moveSliderRange = (e: Event) => {
   const target = e.target as HTMLInputElement
   if (!slider.value || !imageWrapperOverlay.value) return
@@ -98,6 +105,7 @@ const moveSliderRange = (e: Event) => {
   imageWrapperOverlay.value.style.width = `${value}%`
 }
 
+// 設置 slider 的狀態，當滑動開始或結束時觸發
 const setSliderState = (e: Event) => {
   if (e.type === 'input') {
     slider.value?.classList.add('image-comparison__range--active')
@@ -106,8 +114,9 @@ const setSliderState = (e: Event) => {
   slider.value?.classList.remove('image-comparison__range--active')
 }
 
+// 使用 onMounted，在組件掛載後為 slider 添加事件監聽器
 onMounted(() => {
-  const sliderElement = imageComparisonSlider.value?.querySelector<HTMLInputElement>('#image-compare-range');
+  const sliderElement = imageComparisonSlider.value?.querySelector<HTMLInputElement>('#image-compare-range')
   if (sliderElement && 'ontouchstart' in window === false) {
     sliderElement.addEventListener('mouseup', setSliderState)
     sliderElement.addEventListener('mousedown', moveSliderThumb)
@@ -146,6 +155,7 @@ body {
 
 .image-comparison__label,
 .image-comparison__range {
+  transform: rotate(180deg);
   position: absolute;
   top: 0;
   left: 0;
