@@ -3,7 +3,7 @@ Vue3 component for comparing two images with a slider.
 
 ## Demo
 
-https://yubo0826.github.io/img-comparsion-slider/
+https://yubo0826.github.io/img-comp-slider/
 
 ## **Installation**
 
