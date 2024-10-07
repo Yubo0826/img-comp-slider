@@ -3,15 +3,20 @@ import imgCompSlider from './components/ImgCompSlider.vue'
 import { ref } from 'vue'
 
 const img = ref<string[]>([
-  '/src/assets/Florence_Italy_before.jpg',
-  '/src/assets/Florence_Italy_after.jpg'
+  `public/assets/Florence_Italy_before.jpg`,
+  `public/assets/Florence_Italy_after.jpg`
 ])
+
+// Build demo 打開註解片段
+// const img = ref<string[]>([
+//   `${import.meta.env.BASE_URL}assets/Florence_Italy_before.jpg`,
+//   `${import.meta.env.BASE_URL}assets/Florence_Italy_after.jpg`
+// ])
 </script>
 
 <template>
   <div>
     <h1>Image comparion slider</h1>
-    <h3>1.Default</h3>
     <img-comp-slider :img="img" beforeLabel="1910" afterLabel="2022"></img-comp-slider>
   </div>
 </template>
@@ -31,6 +36,7 @@ h1 {
   font-weight: 700;
   font-style: normal;
   text-align: center;
+  margin-bottom: 50px;
 }
 
 h3 {

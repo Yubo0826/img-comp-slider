@@ -7,6 +7,16 @@ import dts from "vite-plugin-dts"
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  // Build demo 打開註解片段，並註解其他option
+  // plugins: [
+  //   vue(),
+  // ],
+  // base: process.env.NODE_ENV === 'production' ? '/img-comp-slider/' : '/',
+  // resolve: {
+  //   alias: {
+  //     '@': fileURLToPath(new URL('./src', import.meta.url))
+  //   }
+  // }
   plugins: [
     vue(),
     dts()
@@ -25,8 +35,7 @@ export default defineConfig({
           vue: 'Vue'
         }
       }
-    },
-    cssCodeSplit: false // 禁用 CSS 分割，將其嵌入到 JS 中
+    }
   },
   resolve: {
     alias: {
